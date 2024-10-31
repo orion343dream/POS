@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POS Dashboard</title>
+    <link rel="icon" type="image/x-icon" href="Images/Logo.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #logoutButton {
+            position: absolute;
+            right: 100px;
+        }
+        #logoutButton:hover {
+            background-color: red;
+        }
+        .stat-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .stat-card-icon {
+            font-size: 2rem;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#" onclick="loadSection('dashboard')" style="font-weight: bold">
+            <img src="Images/Logo.png" alt="Logo" style="width: 30px; aspect-ratio: 1; margin-right: 10px">Chama Systems
+        </a>
+        <button id="logoutButton" onclick="logout()" class="btn btn-primary">
+            <i class="fas fa-sign-out-alt me-2"></i>Log Out
+        </button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">
+                    <i class="fas fa-bars me-2"></i>POS Menu
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="loadSection('dashboard')">
+                            <i class="fas fa-home me-2"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="loadSection('customer')">
+                            <i class="fas fa-users me-2"></i>Customers
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="loadSection('item')">
+                            <i class="fas fa-box me-2"></i>Items
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="loadSection('order')">
+                            <i class="fas fa-shopping-cart me-2"></i>Place Order
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="loadSection('order-history')">
+                            <i class="fas fa-file-invoice me-2"></i>Order Details
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" onclick="logout()">
+                            <i class="fas fa-sign-out-alt me-2"></i>Log Out
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main id="crs" class="main-content container mt-5 pt-3">
+    <div id="dashboard-section">
+        <header class="d-flex justify-content-between align-items-center py-3">
+            <h1 class="h3" style="font-weight: bold ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">Dashboard</h1>
+            <div class="user-menu " style="font-weight: bold ; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif">
+                <span class="me-2">Welcome, Chamath</span>
+            </div>
+        </header>
+
+        <div class="row mt-4">
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted mb-2">Total Sales</h6>
+                            <h3 class="mb-0">$24,500</h3>
+                        </div>
+                        <div class="stat-card-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted mb-2">Total Orders</h6>
+                            <h3 class="mb-0">1,250</h3>
+                        </div>
+                        <div class="stat-card-icon">
+                            <i class="fas fa-shopping-bag"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted mb-2">Total Customers</h6>
+                            <h3 class="mb-0">3,100</h3>
+                        </div>
+                        <div class="stat-card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-4">
+                <div class="stat-card">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="text-muted mb-2">Total Items</h6>
+                            <h3 class="mb-0">450</h3>
+                        </div>
+                        <div class="stat-card-icon">
+                            <i class="fas fa-box-open"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Recent Orders</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Order #1234
+                                <span class="badge bg-primary rounded-pill">$120</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Order #1235
+                                <span class="badge bg-primary rounded-pill">$85</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Order #1236
+                                <span class="badge bg-primary rounded-pill">$210</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Top Selling Items</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Product A
+                                <span class="badge bg-success rounded-pill">150 sold</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Product B
+                                <span class="badge bg-success rounded-pill">120 sold</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                Product C
+                                <span class="badge bg-success rounded-pill">90 sold</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Customer Management</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Add, update, delete, and view customer information here.</p>
+                        <button onclick="loadSection('customer')" class="btn btn-primary">Manage Customers</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Item Management</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Add, update, delete, and view item information here.</p>
+                        <button onclick="loadSection('item')" class="btn btn-primary">Manage Items</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Order Management</h5>
+                    </div>
+                    <div class="card-body">
+                        <p>Create new orders and view order history here.</p>
+                        <button onclick="loadSection('order')" class="btn btn-primary me-2">New Order</button>
+                        <button onclick="loadSection('order-history')" class="btn btn-secondary">View Order History</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-12 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Quick Actions</h5>
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="#" onclick="loadSection('customer')" class="btn btn-primary">
+                                <i class="fas fa-user-plus me-2"></i>Add Customer
+                            </a>
+                            <a href="#" onclick="loadSection('item')" class="btn btn-primary">
+                                <i class="fas fa-box-open me-2"></i>Add Item
+                            </a>
+                            <a href="#" onclick="loadSection('order')" class="btn btn-primary">
+                                <i class="fas fa-shopping-cart me-2"></i>New Order
+                            </a>
+                            <a href="#" onclick="loadSection('order-history')" class="btn btn-outline-secondary">
+                                <i class="fas fa-history me-2"></i>View Order History
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="customer-section" style="display: none;">
+        <div class="container mt-4">
+            <h2 class="mb-4">Customer Management</h2>
+
+            <!-- Customer Form -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Customer Form</h5>
+                    <form id="frm-customer">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="txt-fname" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="txt-fname" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="txt-lname" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="txt-lname" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="txt-email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="txt-email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="txt-mobile" class="form-label">Phone</label>
+                                <input type="tel" class="form-control" id="txt-mobile" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="txt-address" class="form-label">Address</label>
+                                <input type="text" class="form-control" id="txt-address" required>
+                            </div>
+                        </div>
+                        <div class="mt-3 text-end">
+                            <button type="button" class="btn btn-primary" id="btn-save-customer">Add Customer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Customer List -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Customer List</h5>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Address</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbl-customers"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="item-section" style="display: none;">
+        <div class="container mt-4">
+            <h2 class="mb-4">Item Management</h2>
+
+            <!-- Item Form -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Item Form</h5>
+                    <form id="frm-item">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="txt-item-name" class="form-label">Item Name</label>
+                                <input type="text" class="form-control" id="txt-item-name" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="txt-price" class="form-label">Price (Rs.)</label>
+                                <input type="number" class="form-control" id="txt-price" min="0" step="0.01" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="txt-qty" class="form-label">Quantity</label>
+                                <input type="number" class="form-control" id="txt-qty" min="0" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="txt-category" class="form-label">Category</label>
+                                <input type="text" class="form-control" id="txt-category" required>
+                            </div>
+                        </div>
+                        <div class="mt-3 text-end">
+                            <button type="button" class="btn btn-primary" id="btn-save-item">Add Item</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Item List -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Item List</h5>
+                    <div class="table-responsive mt-3">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Category</th>
+                                <th>Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbl-items"></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="order-section" style="display: none;">
+        <div class="container mt-4">
+            <h2 class="mb-4">Place Order</h2>
+
+            <!-- Order Header Section -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Customer Selection -->
+                        <div class="col-md-6">
+                            <h5 class="card-title">Customer Information</h5>
+                            <div class="mb-3">
+                                <label class="form-label">Select Customer</label>
+                                <select id="customer-select" class="form-select">
+                                    <option value="">Select Customer</option>
+                                </select>
+                            </div>
+                            <div id="customer-info" class="mt-3" style="display: none;">
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <tbody>
+                                        <tr>
+                                            <th width="100">Name:</th>
+                                            <td id="info-name"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Email:</th>
+                                            <td id="info-email"></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Phone:</th>
+                                            <td id="info-phone"></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Info -->
+                        <div class="col-md-6">
+                            <h5 class="card-title">Order Information</h5>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <tbody>
+                                    <tr>
+                                        <th width="100">Order ID:</th>
+                                        <td id="order-id"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Date:</th>
+                                        <td id="order-date"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Item Selection Section -->
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Add Items</h5>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">Select Item</label>
+                            <select id="item-select" class="form-select">
+                                <option value="">Select Item</option>
+                            </select>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Unit Price</label>
+                            <input type="text" id="item-price" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Stock Qty</label>
+                            <input type="text" id="item-qty" class="form-control" readonly>
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">Order Qty</label>
+                            <input type="number" id="order-qty" class="form-control" min="1" value="1">
+                        </div>
+                        <div class="col-md-2">
+                            <label class="form-label">&nbsp;</label>
+                            <button type="button" id="add-item" class="btn btn-primary w-100">
+                                <i class="fas fa-plus me-2"></i>Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Cart Section -->
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-4">Order Cart</h5>
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Item Name</th>
+                                <th class="text-end">Unit Price</th>
+                                <th class="text-end">Quantity</th>
+                                <th class="text-end">Total</th>
+                                <th class="text-center">Actions</th>
+                            </tr>
+                            </thead>
+                            <tbody id="cart-body">
+                            <!-- Cart items will be loaded here -->
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th colspan="3" class="text-end">Total:</th>
+                                <th class="text-end" id="cart-total">Rs. 0.00</th>
+                                <th></th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+
+                    <!-- Order Buttons -->
+                    <div class="text-end mt-3">
+                        <button type="button" id="clear-cart" class="btn btn-secondary me-2">
+                            <i class="fas fa-trash me-2"></i>Clear Cart
+                        </button>
+                        <button type="button" id="place-order" class="btn btn-success">
+                            <i class="fas fa-check me-2"></i>Place Order
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="order-history-section" style="display: none;">
+        <div class="container mt-4">
+            <h2>Order History</h2>
+            <div class="card">
+                <div class="card-body">
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Date</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbl-order-history"></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+<script src="assets/jquery-3.7.1.min.js"></script>
+<script>
+    let dashboard_section = document.getElementById("dashboard-section");
+    let customer_section = document.getElementById("customer-section");
+    let item_section = document.getElementById("item-section");
+    let order_section = document.getElementById("order-section");
+    let order_history_section = document.getElementById("order-history-section");
+
+    function loadSection(section) {
+        dashboard_section.style.display = "none";
+        customer_section.style.display = "none";
+        item_section.style.display = "none";
+        order_section.style.display = "none";
+        order_history_section.style.display = "none";
+
+        switch(section) {
+            case 'dashboard':
+                dashboard_section.style.display = "block";
+                break;
+            case 'customer':
+                customer_section.style.display = "block";
+                break;
+            case 'item':
+                item_section.style.display = "block";
+                break;
+            case 'order':
+                order_section.style.display = "block";
+                break;
+            case 'order-history':
+                order_history_section.style.display = "block";
+                if(orderHistoryController) {
+                    orderHistoryController.loadOrderHistory();
+                }
+                break;
+        }
+    }
+
+    function logout() {
+        console.log("Logging out...");
+
+        // Clear any local storage data
+        localStorage.clear();
+
+        // Clear any session storage data
+        sessionStorage.clear();
+
+        // Redirect to the login page
+        window.location.href = 'index.html';
+    }
+
+    // Load the dashboard by default
+    loadSection('dashboard');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="module" src="Controller/CustomerController.js"></script>
+<script type="module" src="Controller/ItemController.js"></script>
+<script type="module" src="Controller/OrderController.js"></script>
+<script type="module" src="Controller/OrderHistoryController.js"></script>
+
+</body>
+</html>
