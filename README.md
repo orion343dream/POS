@@ -1,5 +1,4 @@
 🛍️ Web-Based Point of Sale (POS) System
-🚀 Quick Start Web-Based Point Of Sale (POS) System
 
 
 
