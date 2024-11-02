@@ -1,105 +1,68 @@
 🛍️ Web-Based Point of Sale (POS) System
+Show Image
+Show Image
+Show Image
+A modern, intuitive Point of Sale system built with React and Node.js, designed to streamline retail operations with powerful features and a user-friendly interface.
+✨ Features
+
+📦 Inventory Management
+
+Real-time stock tracking & alerts
+Product CRUD operations
+Bulk import/export
 
 
+👥 Customer Management
+
+Customer profiles & history
+Loyalty program
+Detailed analytics
 
 
-A modern, intuitive, and feature-rich Point of Sale system built with React and Node.js. Streamline your business operations with our easy-to-use web-based POS solution.
+🛒 Sales & Orders
 
-
-✨ Key Features
-
-Inventory Management
-
-Add, update, and delete products
-Track stock levels in real-time
-Set low stock alerts
-Bulk import/export functionality
-
-
-Customer Management
-
-Create and manage customer profiles
-Track purchase history
-Manage loyalty points
-Customer categorization
-
-
-Order Processing
-
-Intuitive cart interface
-Multiple payment methods
 Quick checkout process
-Order modification capabilities
-Print/email receipts
+Multiple payment methods
+Digital receipts
+Order modification
 
 
-Reporting & Analytics
+📊 Reports & Analytics
 
-Detailed sales reports
-Customer insights
-Inventory turnover analysis
+Sales insights
+Inventory analysis
 Revenue tracking
 
 
 
 🚀 Quick Start
-
-Clone the repository:
-
-bashCopygit clone https://github.com/orion343dream/Web-Based-Point-Of-Sale.POS.-System
+bashCopy# Clone repository
+git clone https://github.com/orion343dream/Web-Based-Point-Of-Sale.POS.-System
 cd web-pos-system
 
-Install dependencies:
-
-bashCopy# Install backend dependencies
-cd backend
-npm install
-
-# Install frontend dependencies
-cd ../frontend
-npm install
-
-Set up environment variables:
-
-bashCopycp .env.example .env
-# Edit .env with your configuration
-
-Start the development servers:
-
-bashCopy# Start backend server
-cd backend
-npm run dev
-
-# Start frontend server
-cd ../frontend
-npm start
+# Install dependencies & start
+cd backend && npm install && npm run dev
+cd ../frontend && npm install && npm start
 💻 Tech Stack
 
 Frontend: React.js, Redux, Material-UI
-Backend: Node.js, Express.js
-Database: MongoDB
-Authentication: JWT
+Backend: Node.js, Express.js, MongoDB
+Security: JWT Authentication
 Testing: Jest, React Testing Library
 
-📱 Screenshots
-Show Image
-Show Image
-Show Image
 🤝 Contributing
-We welcome contributions! Please see our Contributing Guide for details.
 
-Fork the repository
-Create your feature branch (git checkout -b feature/AmazingFeature)
-Commit your changes (git commit -m 'Add some AmazingFeature')
-Push to the branch (git push origin feature/AmazingFeature)
-Open a Pull Request
+Fork repository
+Create feature branch (git checkout -b feature/NewFeature)
+Commit changes (git commit -m 'Add NewFeature')
+Push (git push origin feature/NewFeature)
+Open Pull Request
 
-📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
-📧 Contact
-Project Link: https://github.com/yourusername/web-pos-system
-🙏 Acknowledgments
+📞 Contact & Support
 
-Material-UI
-React Icons
-Chart.js
+Project: GitHub Repository
+Issues: Bug Tracker
+License: MIT
+
+
+Built with ❤️ using Material-UI | React Icons | Chart.js
