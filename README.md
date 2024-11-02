@@ -36,15 +36,13 @@ Revenue tracking
 
 
 🚀 Quick Start
-bashCopy# Clone repository
+# Clone repository
 git clone https://github.com/orion343dream/Web-Based-Point-Of-Sale.POS.-System
 cd web-pos-system
 
 # Install dependencies & start
 cd backend && npm install && npm run dev
 cd ../frontend && npm install && npm start
-💻 Tech Stack
-
 Frontend: React.js, Redux, Material-UI
 Backend: Node.js, Express.js, MongoDB
 Security: JWT Authentication
