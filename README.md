@@ -46,7 +46,7 @@ Revenue tracking
 
 Clone the repository:
 
-bashCopygit clone https://github.com/orion343dream/Web-Based-Point-Of-Sale.POS.-System/tree/main
+bashCopygit clone https://github.com/orion343dream/Web-Based-Point-Of-Sale.POS.-System
 cd web-pos-system
 
 Install dependencies:
