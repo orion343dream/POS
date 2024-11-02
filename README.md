@@ -1,4 +1,5 @@
 🛍️ Web-Based Point of Sale (POS) System
+
 Show Image
 Show Image
 
@@ -45,7 +46,7 @@ Revenue tracking
 
 Clone the repository:
 
-bashCopygit clone https://github.com/yourusername/web-pos-system.git
+bashCopygit clone https://github.com/orion343dream/Web-Based-Point-Of-Sale.POS.-System/tree/main
 cd web-pos-system
 
 Install dependencies:
