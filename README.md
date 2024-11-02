@@ -1,7 +1,7 @@
 🛍️ Web-Based Point of Sale (POS) System
+🚀 Quick Start Web-Based Point Of Sale (POS) System
 
-Show Image
-Show Image
+
 
 A modern, intuitive, and feature-rich Point of Sale system built with React and Node.js. Streamline your business operations with our easy-to-use web-based POS solution.
 
