@@ -1,5 +1,5 @@
 🛍️ Web-Based Point of Sale (POS) System
-Install frontend dependencies Web-Based Point of Sale (POS) System
+
 
 
 
